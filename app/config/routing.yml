@@ -1,1 +1,4 @@
+quizz:
+    resource:   "@QuizzBundle/Controller/Admin/QuestionController.php"
+    type:       annotation
 
