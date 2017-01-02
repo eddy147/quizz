@@ -2,7 +2,13 @@
 
 namespace IndyDutch\QuizzBundle\Form;
 
+use Doctrine\ORM\EntityManager;
+use Doctrine\ORM\EntityRepository;
+use IndyDutch\QuizzBundle\Entity\Choice;
+use IndyDutch\QuizzBundle\Entity\PossibleAnswer;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\CollectionType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
@@ -13,7 +19,13 @@ class QuestionType extends AbstractType
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder->add('content');
+        $builder
+            ->add('content')
+            ->add('questionChoices', CollectionType::class, [
+                'entry_type' => QuestionChoiceType::class,
+                'allow_add' => true,
+                'allow_delete' => true,
+            ]);
     }
     
     /**

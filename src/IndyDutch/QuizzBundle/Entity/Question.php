@@ -2,6 +2,7 @@
 
 namespace IndyDutch\QuizzBundle\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -28,6 +29,21 @@ class Question
      */
     private $content;
 
+    /**
+     * @var PossibleAnswer[]
+     *
+     * @ORM\OneToMany(targetEntity="IndyDutch\QuizzBundle\Entity\PossibleAnswer", mappedBy="question"))
+     */
+    private $possibleAnswers;
+
+    /**
+     * Question constructor.
+     */
+    public function __construct()
+    {
+        $this->possibleAnswers = new ArrayCollection();
+    }
+
 
     /**
      * Get id
@@ -37,6 +53,25 @@ class Question
     public function getId()
     {
         return $this->id;
+    }
+
+    /**
+     * @return ArrayCollection
+     */
+    public function getPossibleAnswers(): ArrayCollection
+    {
+        return $this->possibleAnswers;
+    }
+
+    /**
+     * @param ArrayCollection $possibleAnswers
+     * @return Question
+     */
+    public function setPossibleAnswers(ArrayCollection $possibleAnswers): Question
+    {
+        $this->possibleAnswers = $possibleAnswers;
+
+        return $this;
     }
 
     /**

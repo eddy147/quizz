@@ -13,7 +13,11 @@
 
         {% for question in questions %}
 
-            <a href="#" class="list-group-item">{{ question.content }}?</a>
+            <a href="#" class="list-group-item">{{ question.content }}</a>
+
+            {% for choice in questions.choices %}
+                <a href="#" class="list-group-item">{{ choice.content }}</a>
+            {% endfor %}
 
         {% endfor %}
 
