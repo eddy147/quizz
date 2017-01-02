@@ -1,4 +1,5 @@
-.checkout
-=========
+Status: In Progress
 
-A Symfony project created on December 19, 2016, 9:03 pm.
+Symfony application to create a Quizz.
+
+Manager can create Questions, grouped in Categories, and choose Possible Answers and select the correct answer.
