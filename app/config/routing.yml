@@ -1,7 +1,3 @@
-quizz_question:
-    resource:   "@QuizzBundle/Controller/Admin/QuestionController.php"
-    type:       annotation
-
-quizz_choice:
-    resource:   "@QuizzBundle/Controller/Admin/ChoiceController.php"
-    type:       annotation
+app:
+    resource: "@QuizzBundle/Controller/"
+    type:     annotation

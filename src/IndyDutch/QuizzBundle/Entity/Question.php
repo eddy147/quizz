@@ -37,13 +37,18 @@ class Question
     private $possibleAnswers;
 
     /**
+     * @var Category
+     * @ORM\ManyToOne(targetEntity="IndyDutch\QuizzBundle\Entity\Category")
+     */
+    private $category;
+
+    /**
      * Question constructor.
      */
     public function __construct()
     {
         $this->possibleAnswers = new ArrayCollection();
     }
-
 
     /**
      * Get id
@@ -53,6 +58,25 @@ class Question
     public function getId()
     {
         return $this->id;
+    }
+
+    /**
+     * @return Category
+     */
+    public function getCategory(): Category
+    {
+        return $this->category;
+    }
+
+    /**
+     * @param Category $category
+     * @return Question
+     */
+    public function setCategory(Category $category): Question
+    {
+        $this->category = $category;
+
+        return $this;
     }
 
     /**

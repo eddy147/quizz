@@ -23,6 +23,12 @@ class Choice
     private $id;
 
     /**
+     * @var Category
+     * @ORM\ManyToOne(targetEntity="IndyDutch\QuizzBundle\Entity\Category")
+     */
+    private $category;
+
+    /**
      * @var string
      *
      * @ORM\Column(name="content", type="string", length=255)
@@ -44,6 +50,24 @@ class Choice
     public function getId()
     {
         return $this->id;
+    }
+
+    /**
+     * @return Category
+     */
+    public function getCategory(): Category
+    {
+        return $this->category;
+    }
+
+    /**
+     * @param Category $category
+     * @return Choice
+     */
+    public function setCategory(Category $category): Choice
+    {
+        $this->category = $category;
+        return $this;
     }
 
     /**
