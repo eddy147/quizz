@@ -16,7 +16,6 @@ class QuestionController extends Controller
 {
     /**
      * @Route("/questions", name="admin_questions_new")
-     * @Method({"POST"})
      */
     public function newAction(Request $request)
     {

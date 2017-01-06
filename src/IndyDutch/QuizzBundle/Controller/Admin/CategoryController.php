@@ -14,8 +14,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 class CategoryController extends Controller
 {
     /**
-     * @Route("/categories", name="admin_categories_new")
-     * @Method({"POST"})
+     * @Route("/categories", name="admin_categories_new", options = { "expose" = true })
      */
     public function newAction(Request $request)
     {
