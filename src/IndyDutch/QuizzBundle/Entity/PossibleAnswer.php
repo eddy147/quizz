@@ -31,12 +31,12 @@ class PossibleAnswer
     private $question;
 
     /**
-     * @var Choice
+     * @var Answer
      *
-     * @ORM\ManyToOne(targetEntity="IndyDutch\QuizzBundle\Entity\Choice", inversedBy="possibleAnswers")
-     * @ORM\JoinColumn(name="choice_id", referencedColumnName="id", nullable=false)
+     * @ORM\ManyToOne(targetEntity="IndyDutch\QuizzBundle\Entity\Answer", inversedBy="possibleAnswers")
+     * @ORM\JoinColumn(name="answer_id", referencedColumnName="id", nullable=false)
      */
-    private $choice;
+    private $answer;
 
     /**
      * @var bool
@@ -82,20 +82,20 @@ class PossibleAnswer
     }
 
     /**
-     * @return Choice
+     * @return Answer
      */
-    public function getChoice(): Choice
+    public function getAnswer(): Answer
     {
-        return $this->choice;
+        return $this->answer;
     }
 
     /**
-     * @param Choice $choice
+     * @param Answer $answer
      * @return PossibleAnswer
      */
-    public function setChoice(Choice $choice): PossibleAnswer
+    public function setAnswer(Answer $answer): PossibleAnswer
     {
-        $this->choice = $choice;
+        $this->answer = $answer;
 
         return $this;
     }
@@ -124,6 +124,6 @@ class PossibleAnswer
      */
     public function getContent()
     {
-        return $this->choice->getContent();
+        return $this->answer->getContent();
     }
 }

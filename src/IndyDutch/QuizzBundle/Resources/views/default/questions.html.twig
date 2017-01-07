@@ -3,11 +3,9 @@
 {% block body %}
 
     <div class="page-header">
-        <div class="pull-right" style="margin-bottom: 10px; margin-top: 20px;">
-            <a href="{{ path('admin_questions_new') }}" class="btn btn-primary pull-right">Add <span class="fa fa-plus-circle"></span></a>
-        </div>
-        <h1>Questions</h1>
+        <h1>Questions&nbsp;<a href="{{ path('admin_questions_new') }}" class="btn btn-success"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span></a></h1>
     </div>
+
 
     <div class="list-group">
 
@@ -15,8 +13,8 @@
 
             <a href="#" class="list-group-item">{{ question.content }}</a>
 
-            {% for choice in questions.choices %}
-                <a href="#" class="list-group-item">{{ choice.content }}</a>
+            {% for answer in questions.answers %}
+                <a href="#" class="list-group-item">{{ answer.content }}</a>
             {% endfor %}
 
         {% endfor %}

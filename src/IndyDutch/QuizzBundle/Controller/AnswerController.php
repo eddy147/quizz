@@ -6,22 +6,22 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 
-class CategoryController extends Controller
+class AnswerController extends Controller
 {
     /**
-     * @Route("/categories", name="categories_list")
+     * @Route("/answers", name="answers_list")
      * @Method({"GET"})
      */
     public function getListAction()
     {
-        $categories = $this->getDoctrine()
-            ->getRepository('QuizzBundle:Category')
+        $answers = $this->getDoctrine()
+            ->getRepository('QuizzBundle:Answer')
             ->findAll();
 
         return $this->render(
-            '@Quizz/default/categories.html.twig',
+            '@Quizz/default/answers.html.twig',
             array(
-                'categories' => $categories,
+                'answers' => $answers,
             )
         );
     }

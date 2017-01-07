@@ -6,7 +6,7 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
-class ChoiceType extends AbstractType
+class AnswerType extends AbstractType
 {
     /**
      * {@inheritdoc}
@@ -22,7 +22,7 @@ class ChoiceType extends AbstractType
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults(array(
-            'data_class' => 'IndyDutch\QuizzBundle\Entity\Choice'
+            'data_class' => 'IndyDutch\QuizzBundle\Entity\Answer'
         ));
     }
 
@@ -31,7 +31,7 @@ class ChoiceType extends AbstractType
      */
     public function getBlockPrefix()
     {
-        return 'indydutch_quizzbundle_choice';
+        return 'indydutch_quizzbundle_answer';
     }
 
 

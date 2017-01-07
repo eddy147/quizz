@@ -4,7 +4,7 @@ namespace IndyDutch\QuizzBundle\Form;
 
 use Doctrine\ORM\EntityManager;
 use Doctrine\ORM\EntityRepository;
-use IndyDutch\QuizzBundle\Entity\Choice;
+use IndyDutch\QuizzBundle\Entity\Answer;
 use IndyDutch\QuizzBundle\Entity\PossibleAnswer;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
@@ -21,8 +21,8 @@ class QuestionType extends AbstractType
     {
         $builder
             ->add('content')
-            ->add('questionChoices', CollectionType::class, [
-                'entry_type' => QuestionChoiceType::class,
+            ->add('possibleAnswers', CollectionType::class, [
+                'entry_type' => PossibleAnswerType::class,
                 'allow_add' => true,
                 'allow_delete' => true,
             ]);

@@ -4,6 +4,7 @@ namespace IndyDutch\QuizzBundle\Entity;
 
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
+use DoctrineExtensions\Taggable\Taggable;
 
 /**
  * Question
@@ -11,7 +12,7 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Table(name="question")
  * @ORM\Entity(repositoryClass="IndyDutch\QuizzBundle\Repository\QuestionRepository")
  */
-class Question
+class Question implements Taggable
 {
     /**
      * @var int
@@ -36,11 +37,7 @@ class Question
      */
     private $possibleAnswers;
 
-    /**
-     * @var Category
-     * @ORM\ManyToOne(targetEntity="IndyDutch\QuizzBundle\Entity\Category")
-     */
-    private $category;
+    private $tags;
 
     /**
      * Question constructor.
@@ -58,25 +55,6 @@ class Question
     public function getId()
     {
         return $this->id;
-    }
-
-    /**
-     * @return Category
-     */
-    public function getCategory(): Category
-    {
-        return $this->category;
-    }
-
-    /**
-     * @param Category $category
-     * @return Question
-     */
-    public function setCategory(Category $category): Question
-    {
-        $this->category = $category;
-
-        return $this;
     }
 
     /**
@@ -120,6 +98,23 @@ class Question
     public function getContent()
     {
         return $this->content;
+    }
+
+    public function getTags()
+    {
+        $this->tags = $this->tags ?: new ArrayCollection();
+
+        return $this->tags;
+    }
+
+    public function getTaggableType()
+    {
+        return 'quizz_tag';
+    }
+
+    public function getTaggableId()
+    {
+        return $this->getId();
     }
 }
 

@@ -2,39 +2,38 @@
 
 namespace IndyDutch\QuizzBundle\Controller\Admin;
 
-use IndyDutch\QuizzBundle\Form\CategoryType;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use IndyDutch\QuizzBundle\Form\AnswerType;
 use Symfony\Component\HttpFoundation\Request;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
-
 /**
  * @Route("/admin")
  */
-class CategoryController extends Controller
+class AnswerController extends Controller
 {
     /**
-     * @Route("/categories", name="admin_categories_new", options = { "expose" = true })
+     * @Route("/answers", name="admin_answers_new")
      */
     public function newAction(Request $request)
     {
-        $form = $this->createForm(CategoryType::class);
+        $form = $this->createForm(AnswerType::class);
 
         //only handles POST requests
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
-            $category = $form->getData();
+            $answer = $form->getData();
             $em = $this->getDoctrine()->getManager();
-            $em->persist($category);
+            $em->persist($answer);
             $em->flush();
 
-            $this->addFlash('success', 'category added.');
+            $this->addFlash('success', 'answer added.');
 
-            return $this->redirectToRoute('categories_list');
+            return $this->redirectToRoute('answers_list');
         }
 
-        return $this->render('@Quizz/admin/categories.new.html.twig', [
-            'categoryForm' => $form->createView()
+        return $this->render('@Quizz/admin/answers.new.html.twig', [
+            'answerForm' => $form->createView()
         ]);
     }
 }

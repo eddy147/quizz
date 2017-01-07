@@ -4,14 +4,15 @@ namespace IndyDutch\QuizzBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Doctrine\Common\Collections\ArrayCollection;
+use DoctrineExtensions\Taggable\Taggable;
 
 /**
- * Choice
+ * Answer
  *
- * @ORM\Table(name="choice")
- * @ORM\Entity(repositoryClass="IndyDutch\QuizzBundle\Repository\ChoiceRepository")
+ * @ORM\Table(name="answer")
+ * @ORM\Entity(repositoryClass="IndyDutch\QuizzBundle\Repository\AnswerRepository")
  */
-class Choice
+class Answer implements Taggable
 {
     /**
      * @var int
@@ -23,12 +24,6 @@ class Choice
     private $id;
 
     /**
-     * @var Category
-     * @ORM\ManyToOne(targetEntity="IndyDutch\QuizzBundle\Entity\Category")
-     */
-    private $category;
-
-    /**
      * @var string
      *
      * @ORM\Column(name="content", type="string", length=255)
@@ -38,9 +33,11 @@ class Choice
     /**
      * @var PossibleAnswer[]
      *
-     * @ORM\OneToMany(targetEntity="IndyDutch\QuizzBundle\Entity\PossibleAnswer", mappedBy="choice"))
+     * @ORM\OneToMany(targetEntity="IndyDutch\QuizzBundle\Entity\PossibleAnswer", mappedBy="answer"))
      */
     private $possibleAnswers;
+
+    private $tags;
 
     /**
      * Get id
@@ -53,29 +50,11 @@ class Choice
     }
 
     /**
-     * @return Category
-     */
-    public function getCategory(): Category
-    {
-        return $this->category;
-    }
-
-    /**
-     * @param Category $category
-     * @return Choice
-     */
-    public function setCategory(Category $category): Choice
-    {
-        $this->category = $category;
-        return $this;
-    }
-
-    /**
      * Set content
      *
      * @param string $content
      *
-     * @return Choice
+     * @return Answer
      */
     public function setContent($content)
     {
@@ -111,6 +90,23 @@ class Choice
         $this->possibleAnswers = $possibleAnswers;
 
         return $this;
+    }
+
+    public function getTags()
+    {
+        $this->tags = $this->tags ?: new ArrayCollection();
+
+        return $this->tags;
+    }
+
+    public function getTaggableType()
+    {
+        return 'quizz_tag';
+    }
+
+    public function getTaggableId()
+    {
+        return $this->getId();
     }
 
     public function __toString()
