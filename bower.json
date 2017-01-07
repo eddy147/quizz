@@ -1,0 +1,21 @@
+{
+  "name": "quizz",
+  "homepage": "https://github.com/eddy147/quizz",
+  "authors": [
+    "Eddy de Boer <eddy147@gmail.com>"
+  ],
+  "description": "",
+  "main": "",
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "web",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular": "^1.6.1"
+  }
+}
