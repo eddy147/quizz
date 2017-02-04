@@ -1,6 +1,6 @@
 <?php
 
-namespace IndyDutch\QuizzBundle\Tests\Controller;
+namespace IndyDutch\QuizBundle\Tests\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 

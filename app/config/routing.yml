@@ -1,5 +1,5 @@
 app:
-    resource: "@QuizzBundle/Controller/"
+    resource: "@QuizBundle/Controller/"
     type:     annotation
 
 fos_js_routing:

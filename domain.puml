@@ -1,0 +1,23 @@
+@startuml
+
+object Answer
+
+object Question
+Question : string question
+Question : Answer[] answers
+Question : Answer correctAnswer
+
+object User
+
+object Score
+Score : User user
+Score : Question Question
+Score : Answer givenAnswer
+
+Question "1" --* "n" Answer
+Question "1" -- "1" Answer : correctAnswer
+
+Score "0..1"--*"1..n" Question
+User "1"*--"0..n" Score
+
+@enduml

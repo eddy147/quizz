@@ -1,0 +1,4 @@
+services:
+#    quiz.example:
+#        class: IndyDutch\QuizBundle\Example
+#        arguments: ["@service_id", "plain_value", "%parameter%"]

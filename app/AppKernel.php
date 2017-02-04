@@ -17,7 +17,7 @@ class AppKernel extends Kernel
             new Sensio\Bundle\FrameworkExtraBundle\SensioFrameworkExtraBundle(),
             new FOS\JsRoutingBundle\FOSJsRoutingBundle(),
             new FPN\TagBundle\FPNTagBundle(),
-            new IndyDutch\QuizzBundle\QuizzBundle(),
+            new IndyDutch\QuizBundle\QuizBundle(),
         ];
 
         if (in_array($this->getEnvironment(), ['dev', 'test'], true)) {

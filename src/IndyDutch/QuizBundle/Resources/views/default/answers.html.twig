@@ -1,0 +1,24 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+    {% verbatim %}
+        {{ 'This is angularJS code!' }}
+    {% endverbatim %}
+
+    <div class="page-header">
+        <h1>Answers&nbsp;<a href="{{ path('admin_answers_new') }}" class="btn btn-success"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span></a></h1>
+    </div>
+
+
+    <div class="list-group">
+
+        {% for answer in answers %}
+
+            <a href="#" class="list-group-item">{{ answer.content }}</a>
+
+        {% endfor %}
+
+    </div>
+
+{% endblock %}
