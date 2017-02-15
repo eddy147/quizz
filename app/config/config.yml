@@ -73,7 +73,3 @@ swiftmailer:
     password:  "%mailer_password%"
     spool:     { type: memory }
 
-fpn_tag:
-    model:
-        tag_class:     IndyDutch\QuizBundle\Entity\Tag
-        tagging_class: IndyDutch\QuizBundle\Entity\Tagging

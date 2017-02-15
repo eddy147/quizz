@@ -4,7 +4,6 @@ namespace IndyDutch\QuizBundle\Entity;
 
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
-use DoctrineExtensions\Taggable\Taggable;
 
 /**
  * Question
@@ -12,7 +11,7 @@ use DoctrineExtensions\Taggable\Taggable;
  * @ORM\Table(name="question")
  * @ORM\Entity(repositoryClass="IndyDutch\QuizBundle\Repository\QuestionRepository")
  */
-class Question implements Taggable
+class Question
 {
     /**
      * @var int

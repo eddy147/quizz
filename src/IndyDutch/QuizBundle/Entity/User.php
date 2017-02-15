@@ -2,7 +2,11 @@
 
 namespace IndyDutch\QuizBundle\Entity;
 
+use Doctrine\ORM\Mapping as ORM;
 
+/**
+ * @ORM\Table(name="user")
+ */
 class User
 {
     /** @var string */

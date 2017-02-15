@@ -4,6 +4,11 @@ namespace IndyDutch\QuizBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 
+/**
+ * Score
+ *
+ * @ORM\Table(name="score")
+ */
 class Score
 {
     /**
