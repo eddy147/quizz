@@ -73,3 +73,71 @@ swiftmailer:
     password:  "%mailer_password%"
     spool:     { type: memory }
 
+# Assetic Configuration
+assetic:
+    debug:          "%kernel.debug%"
+    use_controller: false
+    bundles:
+    # Defaults (all currently registered bundles):
+        - FrameworkBundle
+        - SecurityBundle
+        - TwigBundle
+        - MonologBundle
+        - SwiftmailerBundle
+        - DoctrineBundle
+        - SensioFrameworkExtraBundle
+        - FOSJsRoutingBundle
+        - LifoTypeaheadBundle
+        - QuizBundle
+        - AsseticBundle
+
+    filters:
+        cssrewrite: ~
+    assets:
+        bootstrap_js:
+            inputs:
+                - "%kernel.root_dir%/../vendor/twitter/bootstrap/dist/js/bootstrap.js"
+        bootstrap_css:
+            inputs:
+                - "%kernel.root_dir%/../vendor/twitter/bootstrap/dist/css/bootstrap.css"
+                - "%kernel.root_dir%/../vendor/twitter/bootstrap/dist/css/bootstrap-theme.css"
+            filters: [cssrewrite]
+
+        bootstrap_glyphicons_ttf:
+            inputs:
+                - "%kernel.root_dir%/../vendor/twitter/bootstrap/dist/fonts/glyphicons-halflings-regular.ttf"
+            output: "fonts/glyphicons-halflings-regular.ttf"
+        bootstrap_glyphicons_eot:
+            inputs:
+                - "%kernel.root_dir%/../vendor/twitter/bootstrap/dist/fonts/glyphicons-halflings-regular.eot"
+            output: "fonts/glyphicons-halflings-regular.eot"
+        bootstrap_glyphicons_svg:
+            inputs:
+                - "%kernel.root_dir%/../vendor/twitter/bootstrap/dist/fonts/glyphicons-halflings-regular.svg"
+            output: "fonts/glyphicons-halflings-regular.svg"
+        bootstrap_glyphicons_woff:
+            inputs:
+                - "%kernel.root_dir%/../vendor/twitter/bootstrap/dist/fonts/glyphicons-halflings-regular.woff"
+            output: "fonts/glyphicons-halflings-regular.woff"
+
+        jquery:
+            inputs:
+                - "%kernel.root_dir%/../vendor/components/jquery/jquery.js"
+
+        fosjsrouting:
+            inputs:
+                - "%kernel.root_dir%/../vendor/friendsofsymfony/jsrouting-bundle/Resources/js/export.js"
+                - "%kernel.root_dir%/../vendor/friendsofsymfony/jsrouting-bundle/Resources/js/externs.js"
+                - "%kernel.root_dir%/../vendor/friendsofsymfony/jsrouting-bundle/Resources/js/router.js"
+                - "%kernel.root_dir%/../vendor/friendsofsymfony/jsrouting-bundle/Resources/js/router.test.js"
+                - "%kernel.root_dir%/../vendor/friendsofsymfony/jsrouting-bundle/Resources/js/run_jsunit.js"
+                - "%kernel.root_dir%/../vendor/friendsofsymfony/jsrouting-bundle/Resources/public/js/router.js"
+
+        lifotypeahead_js:
+            inputs:
+                - "%kernel.root_dir%/../vendor/lifo/typeahead-bundle/Lifo/TypeaheadBundle/Resources/public/js/bootstrap-typeahead.js"
+                - "%kernel.root_dir%/../vendor/lifo/typeahead-bundle/Lifo/TypeaheadBundle/Resources/public/js/typeaheadbundle.js"
+        lifotypeahead_css:
+            inputs:
+                - "%kernel.root_dir%/../vendor/lifo/typeahead-bundle/Lifo/TypeaheadBundle/Resources/public/css/typeaheadbundle.css"
+
