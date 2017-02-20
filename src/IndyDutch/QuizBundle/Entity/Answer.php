@@ -3,7 +3,6 @@
 namespace IndyDutch\QuizBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
-use Doctrine\Common\Collections\ArrayCollection;
 
 /**
  * Answer
@@ -29,7 +28,16 @@ class Answer
      */
     private $answerText;
 
-    private $tags;
+    /**
+     * @var Category[]
+     *
+     * @ORM\ManyToMany(targetEntity="IndyDutch\QuizBundle\Entity\Category")
+     * @ORM\JoinTable(name="answers_categories",
+     *      joinColumns={@ORM\JoinColumn(name="answer_id", referencedColumnName="id")},
+     *      inverseJoinColumns={@ORM\JoinColumn(name="category_id", referencedColumnName="id", unique=true)}
+     *      )
+     */
+    private $categories;
 
     /**
      * Get id
@@ -65,21 +73,23 @@ class Answer
         return $this->answerText;
     }
 
-    public function getTags()
+    /**
+     * @return Category[]
+     */
+    public function getCategories(): array
     {
-        $this->tags = $this->tags ?: new ArrayCollection();
-
-        return $this->tags;
+        return $this->categories;
     }
 
-    public function getTaggableType()
+    /**
+     * @param Category[] $categories
+     * @return Answer
+     */
+    public function setCategories(array $categories): Answer
     {
-        return 'quiz_tag';
-    }
+        $this->categories = $categories;
 
-    public function getTaggableId()
-    {
-        return $this->getId();
+        return $this;
     }
 
     public function __toString()

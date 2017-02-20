@@ -30,28 +30,21 @@ class Question
     private $questionText;
 
     /**
-     * @var Answer[]
+     * @var QuestionAnswers[]
+     * @ORM\OneToMany(targetEntity="IndyDutch\QuizBundle\Entity\QuestionAnswers", mappedBy="question")
+     */
+    private $questionAnswers;
+
+    /**
+     * @var Category[]
      *
-     * @ORM\ManyToMany(targetEntity="IndyDutch\QuizBundle\Entity\Answer")
-     * @ORM\JoinTable(name="questions_answers",
+     * @ORM\ManyToMany(targetEntity="IndyDutch\QuizBundle\Entity\Category")
+     * @ORM\JoinTable(name="questions_categories",
      *      joinColumns={@ORM\JoinColumn(name="question_id", referencedColumnName="id")},
-     *      inverseJoinColumns={@ORM\JoinColumn(name="answer_id", referencedColumnName="id", unique=true)}
+     *      inverseJoinColumns={@ORM\JoinColumn(name="category_id", referencedColumnName="id", unique=true)}
      *      )
      */
-    private $answers;
-
-    /**
-     * @var Answer
-     *
-     * @ORM\OneToOne(targetEntity="IndyDutch\QuizBundle\Entity\Answer")
-     * @ORM\JoinColumn(name="correct_answer_id", referencedColumnName="id")
-     */
-    private $correctAnswer;
-
-    /**
-     * @var Tag[]
-     */
-    private $tags;
+    private $categories;
 
     /**
      * Question constructor.
@@ -115,48 +108,30 @@ class Question
     }
 
     /**
-     * @return Answer
+     * @return Category[]
      */
-    public function getCorrectAnswer(): Answer
+    public function getCategories(): array
     {
-        return $this->correctAnswer;
+        return $this->categories;
     }
 
     /**
-     * @param Answer $correctAnswer
+     * @param Category[] $categories
      * @return Question
      */
-    public function setCorrectAnswer(Answer $correctAnswer): Question
+    public function setCategories(array $categories): Question
     {
-        $this->correctAnswer = $correctAnswer;
+        $this->categories = $categories;
 
         return $this;
     }
 
     /**
-     * @return ArrayCollection|Tag[]
+     * @return QuestionAnswers[]
      */
-    public function getTags()
+    public function getQuestionAnswers(): array
     {
-        $this->tags = $this->tags ?: new ArrayCollection();
-
-        return $this->tags;
-    }
-
-    /**
-     * @return string
-     */
-    public function getTaggableType()
-    {
-        return 'quiz_tag';
-    }
-
-    /**
-     * @return int
-     */
-    public function getTaggableId()
-    {
-        return $this->getId();
+        return $this->questionAnswers;
     }
 }
 

@@ -5,10 +5,12 @@ namespace IndyDutch\QuizBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * @ORM\Table(name="user")
- * @ORM\Entity(repositoryClass="IndyDutch\QuizBundle\Repository\UserRepository")
+ * Category
+ *
+ * @ORM\Table(name="category")
+ * @ORM\Entity(repositoryClass="IndyDutch\QuizBundle\Repository\CategoryRepository")
  */
-class User
+class Category
 {
     /**
      * @var int
@@ -21,7 +23,7 @@ class User
 
     /**
      * @var string
-     * @ORM\Column(name="name", type="string")
+     * @ORM\Column(name="name", type="string", length=100)
      */
     private $name;
 
@@ -34,6 +36,17 @@ class User
     }
 
     /**
+     * @param int $id
+     * @return $this
+     */
+    public function setId(int $id): Category
+    {
+        $this->id = $id;
+
+        return $this;
+    }
+
+    /**
      * @return string
      */
     public function getName(): string
@@ -42,10 +55,10 @@ class User
     }
 
     /**
-     * @param string $firstName
+     * @param string $name
      * @return $this
      */
-    public function setName(string $name): User
+    public function setName(string $name): Category
     {
         $this->name = $name;
 
