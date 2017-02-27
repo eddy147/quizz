@@ -1,4 +1,20 @@
 services:
-#    quiz.example:
-#        class: IndyDutch\QuizBundle\Example
-#        arguments: ["@service_id", "plain_value", "%parameter%"]
+
+#repositories
+    indy_dutch_quiz.repository.category_repository:
+        class: Doctrine\ORM\EntityRepository
+        factory: ['@doctrine.orm.entity_manager', getRepository]
+        arguments:
+            - IndyDutch\QuizBundle\Entity\Category
+
+#services
+    indy_dutch_quiz.service.find_category_service:
+        class:    IndyDutch\QuizBundle\Service\FindCategoryService
+        arguments:
+            - '@indy_dutch_quiz.repository.category_repository'
+
+#controllers
+    indy_dutch_quiz.controller.category_controller:
+        class: IndyDutch\QuizBundle\Controller\CategoryController
+        arguments:
+            - '@indy_dutch_quiz.service.find_category_service'

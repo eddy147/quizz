@@ -8,8 +8,8 @@
          bootstrap="app/autoload.php"
 >
     <php>
-        <ini name="error_reporting" value="-1" />
-        <server name="KERNEL_DIR" value="app/" />
+        <ini name="error_reporting" value="-1"/>
+        <server name="KERNEL_DIR" value="app/"/>
     </php>
 
     <testsuites>
@@ -28,4 +28,10 @@
             </exclude>
         </whitelist>
     </filter>
+
+    <listeners>
+        <listener class="\Mockery\Adapter\Phpunit\TestListener"
+                  file="vendor/mockery/mockery/library/Mockery/Adapter/Phpunit/TestListener.php">
+        </listener>
+    </listeners>
 </phpunit>
