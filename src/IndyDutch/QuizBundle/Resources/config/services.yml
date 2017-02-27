@@ -12,9 +12,3 @@ services:
         class:    IndyDutch\QuizBundle\Service\FindCategoryService
         arguments:
             - '@indy_dutch_quiz.repository.category_repository'
-
-#controllers
-    indy_dutch_quiz.controller.category_controller:
-        class: IndyDutch\QuizBundle\Controller\CategoryController
-        arguments:
-            - '@indy_dutch_quiz.service.find_category_service'

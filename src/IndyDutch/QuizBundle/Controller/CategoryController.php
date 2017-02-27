@@ -12,18 +12,6 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 
 class CategoryController extends Controller
 {
-    /** @var FindCategoryService */
-    private $findCategoryService;
-
-    /**
-     * CategoryController constructor.
-     * @param FindCategoryService $findCategoryService
-     */
-    public function __construct(FindCategoryService $findCategoryService)
-    {
-        $this->findCategoryService = $findCategoryService;
-    }
-
     /**
      * @Route("/categories/{search}", name="categories_autocompletion")
      * @Method({"GET"})
@@ -33,7 +21,8 @@ class CategoryController extends Controller
         $data = array();
         $searchString = trim(strip_tags($request->get('search')));
 
-        $categories = $this->findCategoryService->search($searchString);
+        $categories = $this->get('indy_dutch_quiz.service.find_category_service')
+            ->search($searchString);
 
         foreach ($categories as $category) {
             $data[] = array('id' => $category->getId(), 'name' => $category->getName());
