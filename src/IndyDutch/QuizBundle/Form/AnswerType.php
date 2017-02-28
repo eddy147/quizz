@@ -15,14 +15,14 @@ class AnswerType extends AbstractType
     {
         $builder->add('content');
     }
-    
+
     /**
      * {@inheritdoc}
      */
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults(array(
-            'data_class' => 'IndyDutch\QuizBundle\Entity\Answer'
+            'data_class' => 'IndyDutch\QuizBundle\Entity\Answer',
         ));
     }
 
@@ -33,6 +33,4 @@ class AnswerType extends AbstractType
     {
         return 'indydutch_quizbundle_answer';
     }
-
-
 }

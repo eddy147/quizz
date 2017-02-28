@@ -5,7 +5,6 @@ namespace IndyDutch\QuizBundle\Controller\Admin;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use IndyDutch\QuizBundle\Form\AnswerType;
 use Symfony\Component\HttpFoundation\Request;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 
 /**
@@ -34,7 +33,7 @@ class AnswerController extends Controller
         }
 
         return $this->render('@Quiz/admin/answers.new.html.twig', [
-            'answerForm' => $form->createView()
+            'answerForm' => $form->createView(),
         ]);
     }
 }

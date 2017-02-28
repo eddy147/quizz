@@ -43,6 +43,7 @@ class User
 
     /**
      * @param string $firstName
+     *
      * @return $this
      */
     public function setName(string $name): User

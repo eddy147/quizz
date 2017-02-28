@@ -5,7 +5,7 @@ namespace IndyDutch\QuizBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * Category
+ * Category.
  *
  * @ORM\Table(name="category")
  * @ORM\Entity(repositoryClass="IndyDutch\QuizBundle\Repository\CategoryRepository")
@@ -37,6 +37,7 @@ class Category
 
     /**
      * @param int $id
+     *
      * @return $this
      */
     public function setId(int $id): Category
@@ -56,6 +57,7 @@ class Category
 
     /**
      * @param string $name
+     *
      * @return $this
      */
     public function setName(string $name): Category

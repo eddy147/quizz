@@ -5,7 +5,7 @@ namespace IndyDutch\QuizBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * Score
+ * Score.
  *
  * @ORM\Table(name="score")
  */
@@ -44,6 +44,7 @@ class Score
 
     /**
      * @param User $user
+     *
      * @return Score
      */
     public function setUser(User $user): Score
@@ -63,6 +64,7 @@ class Score
 
     /**
      * @param Question $question
+     *
      * @return Score
      */
     public function setQuestion(Question $question): Score
@@ -82,6 +84,7 @@ class Score
 
     /**
      * @param Answer $givenAnswer
+     *
      * @return Score
      */
     public function setGivenAnswer(Answer $givenAnswer): Score

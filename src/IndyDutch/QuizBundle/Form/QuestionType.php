@@ -16,21 +16,21 @@ class QuestionType extends AbstractType
     {
         $builder->add('questionText');
         $builder->add('categories', CollectionType::class, array(
-            'entry_type'   => new CategoryType(),
+            'entry_type' => new CategoryType(),
             // these options are passed to each "email" type
-            'entry_options'  => array(
-                'attr'      => array('class' => 'email-box')
+            'entry_options' => array(
+                'attr' => array('class' => 'email-box'),
             ),
         ));
     }
-    
+
     /**
      * {@inheritdoc}
      */
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults(array(
-            'data_class' => 'IndyDutch\QuizBundle\Entity\Question'
+            'data_class' => 'IndyDutch\QuizBundle\Entity\Question',
         ));
     }
 
@@ -41,6 +41,4 @@ class QuestionType extends AbstractType
     {
         return 'indydutch_quizbundle_question';
     }
-
-
 }

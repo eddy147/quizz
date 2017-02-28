@@ -6,7 +6,7 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * Question
+ * Question.
  *
  * @ORM\Table(name="question")
  * @ORM\Entity(repositoryClass="IndyDutch\QuizBundle\Repository\QuestionRepository")
@@ -55,7 +55,7 @@ class Question
     }
 
     /**
-     * Get id
+     * Get id.
      *
      * @return int
      */
@@ -74,6 +74,7 @@ class Question
 
     /**
      * @param ArrayCollection $answers
+     *
      * @return Question
      */
     public function setAnswers(ArrayCollection $answers): Question
@@ -84,7 +85,7 @@ class Question
     }
 
     /**
-     * Set QuestionText
+     * Set QuestionText.
      *
      * @param string $questionText
      *
@@ -98,7 +99,7 @@ class Question
     }
 
     /**
-     * Get QuestionText
+     * Get QuestionText.
      *
      * @return string
      */
@@ -117,6 +118,7 @@ class Question
 
     /**
      * @param Category[] $categories
+     *
      * @return Question
      */
     public function setCategories(array $categories): Question
@@ -134,4 +136,3 @@ class Question
         return $this->questionAnswers;
     }
 }
-

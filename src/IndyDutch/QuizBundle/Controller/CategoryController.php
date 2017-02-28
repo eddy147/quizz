@@ -2,8 +2,6 @@
 
 namespace IndyDutch\QuizBundle\Controller;
 
-use IndyDutch\QuizBundle\Entity\Category;
-use IndyDutch\QuizBundle\Service\FindCategoryService;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;

@@ -8,7 +8,7 @@ use IndyDutch\QuizBundle\Entity\Category;
 class LoadCategoryData extends AbstractFixture implements OrderedFixtureInterface
 {
     /**
-     * @inheritdoc
+     * {@inheritdoc}
      */
     public function load(ObjectManager $manager)
     {
@@ -26,7 +26,7 @@ class LoadCategoryData extends AbstractFixture implements OrderedFixtureInterfac
     }
 
     /**
-     * @inheritdoc
+     * {@inheritdoc}
      */
     public function getOrder()
     {

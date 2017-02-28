@@ -5,7 +5,7 @@ namespace IndyDutch\QuizBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * Answer
+ * Answer.
  *
  * @ORM\Table(name="answer")
  * @ORM\Entity(repositoryClass="IndyDutch\QuizBundle\Repository\AnswerRepository")
@@ -40,7 +40,7 @@ class Answer
     private $categories;
 
     /**
-     * Get id
+     * Get id.
      *
      * @return int
      */
@@ -50,7 +50,7 @@ class Answer
     }
 
     /**
-     * Set content
+     * Set content.
      *
      * @param string $answerText
      *
@@ -64,7 +64,7 @@ class Answer
     }
 
     /**
-     * Get content
+     * Get content.
      *
      * @return string
      */
@@ -83,6 +83,7 @@ class Answer
 
     /**
      * @param Category[] $categories
+     *
      * @return Answer
      */
     public function setCategories(array $categories): Answer
@@ -96,6 +97,4 @@ class Answer
     {
         return $this->answerText;
     }
-
 }
-

@@ -20,20 +20,20 @@ class PossibleAnswerType extends AbstractType
                 'class' => Answer::class,
                 'multiple' => true,
                 'placeholder' => 'Select one of the options below:',
-                'query_builder' => function(EntityRepository $er) {
+                'query_builder' => function (EntityRepository $er) {
                     return $er->createQueryBuilder('c');
-                }
+                },
             ])
             ->add('correctAnswer', CheckboxType::class, [
                 'label' => 'Correct Answer?',
-                'required' => false
+                'required' => false,
             ]);
     }
 
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults(array(
-            'data_class' => 'IndyDutch\QuizBundle\Entity\PossibleAnswer'
+            'data_class' => 'IndyDutch\QuizBundle\Entity\PossibleAnswer',
         ));
     }
 
