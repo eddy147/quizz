@@ -14,7 +14,6 @@ class FindCategoryServiceTest extends WebTestCase
     public function testSearchWithValidSearchString()
     {
         $expected = array(
-            array('id' => 3, 'name' => 'geography'),
             array('id' => 4, 'name' => 'science'),
         );
         $repository = \Mockery::mock('IndyDutch\QuizBundle\Repository\CategoryRepository')->makePartial();
@@ -22,6 +21,8 @@ class FindCategoryServiceTest extends WebTestCase
             ->shouldReceive('search')
             ->once()
             ->andReturn($expected);
+        $repository
+            ->shouldNotReceive('findAll');
         $service = new FindCategoryService($repository);
         $this->assertSame($expected, $service->search('sc'));
     }
@@ -30,11 +31,20 @@ class FindCategoryServiceTest extends WebTestCase
      * @testdox Test that if you give a not a valid searchstring, meaning, shorter than 2 characters,
      * it will not call a real search.
      */
-    public function testSearchWithInValidSearchString()
+    public function testSearchWithNoValidSearchString()
     {
+        $expected = array(
+            array('id' => 3, 'name' => 'geography'),
+            array('id' => 4, 'name' => 'science'),
+        );
         $repository = \Mockery::mock('IndyDutch\QuizBundle\Repository\CategoryRepository')->makePartial();
-        $repository->shouldNotReceive('search');
+        $repository
+            ->shouldNotReceive('search');
+        $repository
+            ->shouldReceive('findAll')
+            ->once()
+            ->andReturn($expected);
         $service = new FindCategoryService($repository);
-        $this->assertSame(array(), $service->search('s'));
+        $this->assertSame($expected, $service->search(''));
     }
 }

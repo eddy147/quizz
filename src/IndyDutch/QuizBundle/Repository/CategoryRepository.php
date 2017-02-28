@@ -12,4 +12,10 @@ class CategoryRepository extends \Doctrine\ORM\EntityRepository
             ->getQuery()
             ->getResult();
     }
+
+    public function findAll()
+    {
+        return $this->findBy(array(), array('name' => 'ASC'));
+    }
+
 }

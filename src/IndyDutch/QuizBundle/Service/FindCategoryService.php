@@ -6,7 +6,7 @@ use IndyDutch\QuizBundle\Repository\CategoryRepository;
 
 class FindCategoryService
 {
-    const MIN_SEARCH_LENGTH = 2;
+    const MIN_SEARCH_LENGTH = 1;
 
     /** @var CategoryRepository */
     private $repository;
@@ -30,6 +30,6 @@ class FindCategoryService
             return $this->repository->search($searchString);
         }
 
-        return array();
+        return $this->repository->findAll();
     }
 }

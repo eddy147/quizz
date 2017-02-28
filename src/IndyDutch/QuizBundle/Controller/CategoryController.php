@@ -11,7 +11,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 class CategoryController extends Controller
 {
     /**
-     * @Route("/categories/{search}", name="categories_autocompletion")
+     * @Route("/categories", name="categories_autocompletion")
      * @Method({"GET"})
      */
     public function autoCompleteAction(Request $request)
