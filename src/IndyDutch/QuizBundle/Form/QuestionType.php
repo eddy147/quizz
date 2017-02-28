@@ -3,7 +3,6 @@
 namespace IndyDutch\QuizBundle\Form;
 
 use IndyDutch\QuizBundle\Entity\Category;
-use IndyDutch\QuizBundle\QuizBundle;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\CollectionType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
@@ -19,15 +18,9 @@ class QuestionType extends AbstractType
     {
         $builder
             ->add('questionText')
-//        $builder->add('categories', 'entity_typeahead', array(
-//            'class'  => 'MyBundle:User',
-//            'render' => 'fullname',
-//            'route'  => 'user_list',
-//        ));
-            ->add('categories', CollectionType::class, array(
-                'entry_typeahead'   => Category::class,
-                'render' => 'name',
-                'route' => 'categories',
+            ->add('categories', null, array(
+                'class'  => 'QuizBundle:Category',
+                'multiple' => true,
             ))
             ->add('save', SubmitType::class, array('label' => 'Create Question'));
     }

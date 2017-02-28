@@ -17,5 +17,4 @@ class CategoryRepository extends \Doctrine\ORM\EntityRepository
     {
         return $this->findBy(array(), array('name' => 'ASC'));
     }
-
 }

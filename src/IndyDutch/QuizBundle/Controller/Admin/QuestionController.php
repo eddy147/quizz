@@ -2,7 +2,6 @@
 
 namespace IndyDutch\QuizBundle\Controller\Admin;
 
-use IndyDutch\QuizBundle\Form\PossibleAnswerType;
 use IndyDutch\QuizBundle\Form\QuestionType;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
@@ -18,27 +17,12 @@ class QuestionController extends Controller
      */
     public function newAction(Request $request)
     {
-        $questionForm = $this->createForm(QuestionType::class);
+        $form = $this->createForm(QuestionType::class);
 
         //only handles POST requests
-        $questionForm->handleRequest($request);
-        if ($questionForm->isSubmitted() && $questionForm->isValid()) {
-            $question = $questionForm->getData();
-            $em = $this->getDoctrine()->getManager();
-            $em->persist($question);
-            $em->flush();
-
-            $this->addFlash('success', 'Question added.');
-
-            return $this->redirectToRoute('questions_list');
-        }
-
-        $possibleAnswerForm = $this->createForm(PossibleAnswerType::class);
-
-        //only handles POST requests
-        $possibleAnswerForm->handleRequest($request);
-        if ($possibleAnswerForm->isSubmitted() && $possibleAnswerForm->isValid()) {
-            $question = $possibleAnswerForm->getData();
+        $form->handleRequest($request);
+        if ($form->isSubmitted() && $form->isValid()) {
+            $question = $form->getData();
             $em = $this->getDoctrine()->getManager();
             $em->persist($question);
             $em->flush();
@@ -49,8 +33,7 @@ class QuestionController extends Controller
         }
 
         return $this->render('@Quiz/admin/questions.new.html.twig', [
-            'questionForm' => $questionForm->createView(),
-            'possibleAnswerForm' => $possibleAnswerForm->createView(),
+            'form' => $form->createView(),
         ]);
     }
 }

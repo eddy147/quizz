@@ -13,6 +13,10 @@ class CategoryController extends Controller
     /**
      * @Route("/categories", name="categories_autocompletion")
      * @Method({"GET"})
+     *
+     * @param Request $request
+     *
+     * @return JsonResponse
      */
     public function autoCompleteAction(Request $request)
     {
